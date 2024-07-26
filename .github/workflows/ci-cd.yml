@@ -17,12 +17,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up SonarQube scanner
-      uses: SonarSource/sonarqube-scan-action@v1.0.1
+      
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
     - name: SonarQube scan
       run: sonar-scanner
