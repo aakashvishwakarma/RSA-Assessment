@@ -1,13 +1,14 @@
 name: CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - cicd
-  pull_request:
-    branches:
-      - cicd
-
+  # push:
+  #   branches:
+  #     - cicd
+  # pull_request:
+  #   branches:
+  #     - cicd
+  workflow_dispatch:
+  
 jobs:
   sonarqube:
     name: SonarQube Scan
