@@ -53,7 +53,7 @@ jobs:
         curl -f http://localhost:80 || (docker logs $(docker ps -lq) && exit 1)
 
     - name: Push Docker image
-      if: steps.test.outcome == 'success'
+      if: failure()
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-hello-world:${{ github.sha }}
 
    
