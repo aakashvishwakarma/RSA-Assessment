@@ -61,6 +61,12 @@ jobs:
       with:
         sarif_file: 'trivy-results.sarif'
 
+    - name: Upload Trivy results as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: trivy-results
+        path: trivy-results.sarif
+
     - name: Test Docker image
       id: test
       run: |
