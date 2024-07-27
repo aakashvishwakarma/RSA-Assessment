@@ -9,6 +9,10 @@ on:
   #     - cicd
   workflow_dispatch:
   
+permissions:
+  contents: read   # This is required for actions/checkout
+  security-events: write
+  
 jobs:
   sonarqube:
     name: SonarQube Scan
@@ -53,7 +57,7 @@ jobs:
         output: 'trivy-results.sarif'
 
     - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       if: always()
       with:
         sarif_file: 'trivy-results.sarif'
